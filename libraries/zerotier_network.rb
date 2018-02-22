@@ -32,6 +32,7 @@ module ChefZerotierCookbook
                         networkId: network_id,
                         nodeId: node["zerotier"]["node_id"],
                         name: node_name,
+                        hidden: false,
                         config: {
                             nwid: network_id,
                             authorized: true
