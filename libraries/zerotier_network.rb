@@ -66,6 +66,15 @@ module ChefZerotierCookbook
                     leave.run_command
                     raise format("Error leaving network %s", network_id) if leave.error?
                 end
+
+                if auth_token
+                    url = URI.parse(format("%s/api/network/%s/member/%s/", central_url, network_id, node['zerotier']['node_id']))
+                    response = Net::HTTP.start(url.host, url.port, use_ssl: url.scheme == "https") do |http|
+                        delete = Net::HTTP::Delete.new(url, "Content-Type" => "application/json")
+                        delete.add_field("Authorization", format("Bearer %s", auth_token))
+                        http.request(delete)
+                    end
+                end
             else
                 Chef::Log.warn(format("Network %s is not joined. Skipping", network_id))
             end
