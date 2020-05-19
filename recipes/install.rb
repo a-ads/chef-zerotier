@@ -6,8 +6,9 @@
 
 case node['platform']
 when 'debian', 'ubuntu'
+    node['lsb']['codename'] == 'focal' ? codename = 'disco' : codename = node['lsb']['codename']
     apt_repository 'zerotier' do
-        uri "http://download.zerotier.com/debian/#{node['lsb']['codename']}"
+        uri "http://download.zerotier.com/debian/#{codename}"
         components ['main']
         key 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg'
         trusted true
