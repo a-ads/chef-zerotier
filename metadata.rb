@@ -4,7 +4,7 @@ maintainer_email 'grant.limberg@zerotier.com'
 license 'GPL v3'
 description 'Installs/Configures ZeroTier'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '1.0.8' # fix repository by asper
+version '1.101.7' # fix repository by asper
 issues_url 'https://github.com/zerotier/chef-zerotier/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/a-ads/chef-zerotier' if respond_to?(:source_url)
 
